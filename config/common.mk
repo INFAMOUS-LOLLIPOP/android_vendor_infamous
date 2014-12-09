@@ -107,6 +107,10 @@ PRODUCT_COPY_FILES += \
 # infamous-specific init file
 PRODUCT_COPY_FILES += \
     vendor/infamous/prebuilt/common/etc/init.local.rc:root/init.cm.rc
+	
+# Viper4Android
+PRODUCT_COPY_FILES += \
+    vendor/validus/prebuilt/common/etc/viper4android/viper4android.apk:system/app/Viper4Android/viper4android.apk	
 
 # Bring in camera effects
 PRODUCT_COPY_FILES +=  \
@@ -151,7 +155,12 @@ PRODUCT_PACKAGES += \
     Apollo \
     CMFileManager \
     LockClock \
-    CMHome
+    CMHome \
+    PerformanceControl
+	
+# Adaway	
+PRODUCT_COPY_FILES += \
+    vendor/infamous/prebuilt/common/app/Adaway/org.adaway.apk:system/app/Adaway/org.adaway.apk	
 
 # infamous Hardware Abstraction Framework
 PRODUCT_PACKAGES += \
@@ -228,7 +237,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 endif
 
-PRODUCT_PACKAGE_OVERLAYS += vendor/cm/overlay/common
+PRODUCT_PACKAGE_OVERLAYS += vendor/infamous/overlay/common
 
 PRODUCT_VERSION_MAJOR = LP
 PRODUCT_VERSION_MINOR = 0
@@ -239,7 +248,7 @@ PRODUCT_VERSION_MAINTENANCE = 0.1
 ifndef INFAMOUS_BUILDTYPE
     ifdef RELEASE_TYPE
         # Starting with "INFAMOUS_" is optional
-        RELEASE_TYPE := $(shell echo $(RELEASE_TYPE) | sed -e 's|^CM_||g')
+        RELEASE_TYPE := $(shell echo $(RELEASE_TYPE) | sed -e 's|^INFAMOUS_||g')
         INFAMOUS_BUILDTYPE := $(RELEASE_TYPE)
     endif
 endif
@@ -267,7 +276,7 @@ ifdef INFAMOUS_BUILDTYPE
             # Remove leading dash from INFAMOUS_EXTRAVERSION
             INFAMOUS_EXTRAVERSION := $(shell echo $(INFAMOUS_EXTRAVERSION) | sed 's/-//')
             # Add leading dash to INFAMOUS_EXTRAVERSION
-            CM_EXTRAVERSION := -$(INFAMOUS_EXTRAVERSION)
+            INFAMOUS_EXTRAVERSION := -$(INFAMOUS_EXTRAVERSION)
         endif
     endif
 else
@@ -284,19 +293,19 @@ endif
 
 ifeq ($(INFAMOUS_BUILDTYPE), RELEASE)
     ifndef TARGET_VENDOR_RELEASE_BUILD_ID
-        INFAMOUS_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(CM_BUILD)
+        INFAMOUS_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(INFAMOUS_BUILD)
     else
         ifeq ($(TARGET_BUILD_VARIANT),user)
-            INFAMOUS_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(TARGET_VENDOR_RELEASE_BUILD_ID)-$(CM_BUILD)
+            INFAMOUS_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(TARGET_VENDOR_RELEASE_BUILD_ID)-$(INFAMOUS_BUILD)
         else
-            INFAMOUS_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(CM_BUILD)
+            INFAMOUS_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(INFAMOUS_BUILD)
         endif
     endif
 else
     ifeq ($(PRODUCT_VERSION_MINOR),0)
-        INFAMOUS_VERSION := $(PRODUCT_VERSION_MAJOR)-$(shell date -u +%Y%m%d)-$(CM_BUILDTYPE)$(CM_EXTRAVERSION)-$(CM_BUILD)
+        INFAMOUS_VERSION := $(PRODUCT_VERSION_MAJOR)-$(shell date -u +%Y%m%d)-$(INFAMOUS_BUILDTYPE)$(INFAMOUS_EXTRAVERSION)-$(INFAMOUS_BUILD)
     else
-        CM_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(shell date -u +%Y%m%d)-$(CM_BUILDTYPE)$(CM_EXTRAVERSION)-$(CM_BUILD)
+        INFAMOUS_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(shell date -u +%Y%m%d)-$(INFAMOUS_BUILDTYPE)$(INFAMOUS_EXTRAVERSION)-$(INFAMOUS_BUILD)
     endif
 endif
 
@@ -306,13 +315,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
   ro.modversion=$(INFAMOUS_VERSION) \
 
 
-INFAMOUS_DISPLAY_VERSION := $(CM_VERSION)
+INFAMOUS_DISPLAY_VERSION := $(INFAMOUS_VERSION)
 
 ifneq ($(PRODUCT_DEFAULT_DEV_CERTIFICATE),)
 ifneq ($(PRODUCT_DEFAULT_DEV_CERTIFICATE),build/target/product/security/testkey)
   ifneq ($(INFAMOUS_BUILDTYPE), UNOFFICIAL)
     ifndef TARGET_VENDOR_RELEASE_BUILD_ID
-      ifneq ($(CM_EXTRAVERSION),)
+      ifneq ($(INFAMOUS_EXTRAVERSION),)
         # Remove leading dash from INFAMOUS_EXTRAVERSION
         INFAMOUS_EXTRAVERSION := $(shell echo $(INFAMOUS_EXTRAVERSION) | sed 's/-//')
         TARGET_VENDOR_RELEASE_BUILD_ID := $(INFAMOUS_EXTRAVERSION)
