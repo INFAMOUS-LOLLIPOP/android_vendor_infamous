@@ -148,12 +148,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Launcher3 \
     Trebuchet \
+    AudioFX \
     DSPManager \
     libcyanogen-dsp \
     audio_effects.conf \
     CMWallpapers \
     Apollo \
     CMFileManager \
+    Eleven \
     LockClock \
     CMHome \
     PerformanceControl
@@ -240,7 +242,7 @@ endif
 PRODUCT_PACKAGE_OVERLAYS += vendor/infamous/overlay/common
 
 PRODUCT_VERSION_MAJOR = LP
-PRODUCT_VERSION_MINOR = 0
+PRODUCT_VERSION_MINOR = BETA
 PRODUCT_VERSION_MAINTENANCE = 0.1
 
 # Set INFAMOUS_BUILDTYPE from the env RELEASE_TYPE, for jenkins compat
