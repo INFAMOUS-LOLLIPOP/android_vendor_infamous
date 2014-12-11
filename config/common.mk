@@ -110,7 +110,7 @@ PRODUCT_COPY_FILES += \
 	
 # Viper4Android
 PRODUCT_COPY_FILES += \
-    vendor/validus/prebuilt/common/etc/viper4android/viper4android.apk:system/app/Viper4Android/viper4android.apk	
+    vendor/infamous/prebuilt/common/etc/viper4android/viper4android.apk:system/app/Viper4Android/viper4android.apk	
 
 # Bring in camera effects
 PRODUCT_COPY_FILES +=  \
