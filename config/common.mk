@@ -155,9 +155,8 @@ PRODUCT_PACKAGES += \
     CMFileManager \
     Eleven \
     LockClock \
-    CMHome \
-    PerformanceControl
-	
+    CMHome
+
 # Adaway	
 PRODUCT_COPY_FILES += \
     vendor/infamous/prebuilt/common/app/Adaway/org.adaway.apk:system/app/Adaway/org.adaway.apk	
@@ -216,26 +215,22 @@ PRODUCT_PACKAGES += \
 
 # These packages are excluded from user builds
 ifneq ($(TARGET_BUILD_VARIANT),user)
-
 PRODUCT_PACKAGES += \
     procmem \
     procrank \
     su
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.root_access=1
-else
+endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.root_access=0
-
-endif
 
 PRODUCT_PACKAGE_OVERLAYS += vendor/infamous/overlay/common
 
 PRODUCT_VERSION_MAJOR = 5.02
 PRODUCT_VERSION_MINOR = beta
 PRODUCT_VERSION_MAINTENANCE = 0.1
+
+# Set Infamous_BUILDTYPE from the env RELEASE_TYPE, for jenkins compat
 
 # Set INFAMOUS_BUILDTYPE from the env RELEASE_TYPE, for jenkins compat
 
@@ -308,6 +303,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
   ro.infamous.releasetype=$(INFAMOUS_BUILDTYPE) \
   ro.modversion=$(INFAMOUS_VERSION) \
 
+-include vendor/cm-priv/keys/keys.mk
 
 INFAMOUS_DISPLAY_VERSION := $(INFAMOUS_VERSION)
 
