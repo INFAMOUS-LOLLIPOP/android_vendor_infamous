@@ -104,9 +104,14 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/infamous/prebuilt/common/etc/init.local.rc:root/init.cm.rc
 	
-# Viper4Android
+# SuperSu
 PRODUCT_COPY_FILES += \
-    vendor/infamous/prebuilt/common/etc/viper4android/viper4android.apk:system/app/Viper4Android/viper4android.apk	
+    vendor/infamous/prebuilt/common/UPDATE-SuperSU.zip:system/addon.d/UPDATE-SuperSU.zip \
+    vendor/infamous/prebuilt/common/etc/init.d/99SuperSUDaemon:system/etc/init.d/99SuperSUDaemon
+
+# Infamous Performance
+PRODUCT_COPY_FILES += \
+    vendor/infamous/prebuilt/common/infamous_performance.apk:system/app/infamous_performance/infamous_performance.apk
 
 # Bring in camera effects
 PRODUCT_COPY_FILES +=  \
@@ -233,7 +238,7 @@ endif
 
 PRODUCT_PACKAGE_OVERLAYS += vendor/infamous/overlay/common
 
-PRODUCT_VERSION_MAJOR = LP
+PRODUCT_VERSION_MAJOR = 5.02
 PRODUCT_VERSION_MINOR = beta
 PRODUCT_VERSION_MAINTENANCE = 0.1
 
