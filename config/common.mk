@@ -143,7 +143,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     VoicePlus \
     Basic \
-    libemoji
+    libemoji \
+    Terminal
 
 # Custom infamous packages
 PRODUCT_PACKAGES += \
@@ -215,21 +216,14 @@ PRODUCT_PACKAGES += \
 
 # These packages are excluded from user builds
 ifneq ($(TARGET_BUILD_VARIANT),user)
-
 PRODUCT_PACKAGES += \
     procmem \
     procrank \
-    Superuser \
     su
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.root_access=1
-else
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.root_access=0
-
 endif
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.root_access=
 
 PRODUCT_PACKAGE_OVERLAYS += vendor/infamous/overlay/common
 
