@@ -227,7 +227,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 else
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.root_access=
+    persist.sys.root_access=0
+
+endif
 
 PRODUCT_PACKAGE_OVERLAYS += vendor/infamous/overlay/common
 
