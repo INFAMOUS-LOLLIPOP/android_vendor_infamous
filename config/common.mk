@@ -36,14 +36,6 @@ PRODUCT_BOOTANIMATION := vendor/infamous/prebuilt/common/bootanimation/$(TARGET_
 endif
 endif
 
-ifdef INFAMOUS_NIGHTLY
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.rommanager.developerid=cyanogenmodnightly
-else
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.rommanager.developerid=cyanogenmod
-endif
-
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 ifeq ($(PRODUCT_GMS_CLIENTID_BASE),)
@@ -65,7 +57,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.selinux=1
-
+	persist.sys.root_access=3
+	
 # Thank you, please drive thru!
 PRODUCT_PROPERTY_OVERRIDES += persist.sys.dun.override=0
 
@@ -148,6 +141,7 @@ PRODUCT_PACKAGES += \
 
 # Custom infamous packages
 PRODUCT_PACKAGES += \
+	PerformanceControl \
     Launcher3 \
     Trebuchet \
     AudioFX \
