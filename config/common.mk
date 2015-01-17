@@ -56,9 +56,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.com.android.dataroaming=false
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.build.selinux=1
-	persist.sys.root_access=3
-	
+    ro.build.selinux=1 \
+    persist.sys.root_access=3
+
 # Thank you, please drive thru!
 PRODUCT_PROPERTY_OVERRIDES += persist.sys.dun.override=0
 
@@ -215,12 +215,9 @@ PRODUCT_PACKAGES += \
     su
 endif
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.root_access=0
-
 PRODUCT_PACKAGE_OVERLAYS += vendor/infamous/overlay/common
 
-PRODUCT_VERSION_MAJOR = 5.02
+PRODUCT_VERSION_MAJOR = 5.0.2
 PRODUCT_VERSION_MINOR = beta
 PRODUCT_VERSION_MAINTENANCE = 0.1
 
