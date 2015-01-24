@@ -14,10 +14,11 @@
 
 #############################
 # performance-related sysfs files
-/sys/kernel/mm/ksm(/.*)?    u:object_r:sysfs_writable:s0
-/sys/devices/system/cpu.*/cpufreq(/.*)? --  u:object_r:sysfs_devices_system_cpu:s0
-/sys/block/mmcblk(/.*)?     u:object_r:sysfs_devices_system_iosched:s0
-/sys/block/zram(/.*)?       u:object_r:sysfs_writable:s0
+/sys/block/mmcblk.*/queue/scheduler               u:object_r:sysfs_devices_system_iosched:s0
+/sys/block/zram(/.*)?                             u:object_r:sysfs_devices_system_zram:s0
+/sys/devices/system/cpu.*/cpufreq(/.*)?           u:object_r:sysfs_devices_system_cpu:s0
+/sys/kernel/mm/ksm(/.*)?                          u:object_r:sysfs_devices_system_ksm:s0
+/sys/module/lowmemorykiller/parameters/minfree    u:object_r:sysfs_lowmemorykiller:s0
 
 /data/hostapd(/.*)?         u:object_r:wifi_data_file:s0
 /data/misc/radio(/.*)?      u:object_r:radio_data_file:s0
