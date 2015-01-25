@@ -19,6 +19,7 @@ BOARD_SEPOLICY_UNION += \
     app.te \
     auditd.te \
     bootanim.te \
+    drmserver.te \
     healthd.te \
     hostapd.te \
     installd.te \
