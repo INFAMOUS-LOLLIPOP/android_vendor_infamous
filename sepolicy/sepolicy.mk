@@ -33,6 +33,8 @@ BOARD_SEPOLICY_UNION += \
     system.te \
     system_app.te \
     ueventd.te \
+    uncrypt.te \
+    userinit.te \
     vold.te \
     zygote.te \
     mac_permissions.xml
