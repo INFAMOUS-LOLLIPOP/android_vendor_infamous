@@ -146,8 +146,7 @@ PRODUCT_PACKAGES += \
     CMFileManager \
     Eleven \
     LockClock \
-    CMHome \
-    InfamousDark
+    CMHome
 
 # Adaway	
 PRODUCT_COPY_FILES += \
