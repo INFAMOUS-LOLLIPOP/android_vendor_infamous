@@ -1,2 +1,3 @@
 add_lunch_combo infamous_shamu-userdebug
 add_lunch_combo infamous_trltetmo-userdebug
+add_lunch_combo infamous_hltetmo-userdebug
