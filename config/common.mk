@@ -146,7 +146,8 @@ PRODUCT_PACKAGES += \
     CMFileManager \
     Eleven \
     LockClock \
-    CMHome
+    CMHome \
+    InfamousDark
 
 # Screen recorder package and lib
 PRODUCT_PACKAGES += \
