@@ -148,6 +148,11 @@ PRODUCT_PACKAGES += \
     LockClock \
     CMHome
 
+# Screen recorder package and lib
+PRODUCT_PACKAGES += \
+    ScreenRecorder \
+    libscreenrecorder
+
 # Adaway	
 PRODUCT_COPY_FILES += \
     vendor/infamous/prebuilt/common/app/Adaway/org.adaway.apk:system/app/Adaway/org.adaway.apk	
