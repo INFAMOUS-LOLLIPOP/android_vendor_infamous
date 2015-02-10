@@ -104,7 +104,6 @@ PRODUCT_COPY_FILES += \
     vendor/infamous/prebuilt/common/infamous_performance.apk:system/app/Infamous_Performance/infamous_performance.apk
     
 # Infamous themes
-# Infamous Performance
 PRODUCT_COPY_FILES += \
     vendor/infamous/prebuilt/common/infamous_theme.apk:system/app/Infamous_Theme/infamous_theme.apk
 
