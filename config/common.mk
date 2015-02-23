@@ -149,7 +149,8 @@ PRODUCT_PACKAGES += \
     Eleven \
     LockClock \
     CMHome \
-    InfamousDark
+    InfamousDark\
+    OmniSwitch
 
 # Screen recorder package and lib
 PRODUCT_PACKAGES += \
